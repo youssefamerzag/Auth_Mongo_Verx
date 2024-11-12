@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <h1>Sign up</h1>
+    <form id="signInForm">
+      <label>
+        <span>username</span>
+        <input id="username" type="text" placeholder="username">
+      </label>
+      <label>
+        <span>password</span>
+        <input id="password" type="text" placeholder="password">
+      </label>
+      <input type="submit">
+    </form>
+  </div>
+
+<script>
+  document.getElementById("signInForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    const payload = {username , password};
+
+    try {
+      const res = await fetch('http://localhost:8000/signUp', {
+        method : "Post",
+        headers: {
+            'Content-Type': 'application/json'
+          },
+        body : JSON.stringify(payload)
+      });
+
+      if(res.status == 200) {
+        alert("user is created")
+        console.log("user is connected done!! ");
+      }else {
+        alert("wrong!! ")
+      }
+    }catch(err) {
+      console.log(err);
+      alert("error")
+    }
+  })
+</script>
+</body>
+</html>

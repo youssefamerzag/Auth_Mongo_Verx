@@ -1,0 +1,49 @@
+openapi: 3.0.0
+info:
+  title: Example API
+  version: 1.0.0
+paths:
+  /signUp:
+    post:
+      summary: Add a new pet
+      operationId: signUp
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+              additionalProperties: false
+      responses:
+        '201':
+          description: Pet created
+  /login:
+    post:
+      summary: Add a new user
+      operationId: login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+              additionalProperties: false
+      responses:
+        '201':
+          description: User created
+  /home:
+    get:
+      operationId: home
+      responses:
+        "200":
+          description: OK
